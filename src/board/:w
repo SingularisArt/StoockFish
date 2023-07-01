@@ -1,0 +1,18 @@
+from .piece import Piece
+
+
+class Bishop(Piece):
+    def __init__(self, color, square_size):
+        super().__init__(color, "bishop")
+
+        self.color = color
+        self.name = "bishop"
+
+        self.starting_row = [2, 5]
+
+        if color == "white":
+            self.starting_col = 6
+        elif color == "black":
+            self.starting_col = 1
+
+        self.image = self.get_image()
