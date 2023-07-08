@@ -9,11 +9,61 @@ class Bishop(Piece):
         self.name = "bishop"
         self.square_size = square_size
 
-        self.starting_row = [2, 5]
+        self.get_image()
 
-        if color == "white":
-            self.starting_col = 7
-        elif color == "black":
-            self.starting_col = 0
+    def _get_legal_moves(self, board, row, col):
+        legal_moves = []
 
-        self.image = self.get_image()
+        # Check the top left diagonal
+        for i in range(1, 8):
+            if row - i >= 0 and col - i >= 0:
+                if board[row - i][col - i] == "--":
+                    legal_moves.append((row - i, col - i))
+                elif board[row - i][col - i][0] != self.color[0]:
+                    legal_moves.append((row - i, col - i))
+                    break
+                else:
+                    break
+            else:
+                break
+
+        # Check the top right diagonal
+        for i in range(1, 8):
+            if row - i >= 0 and col + i <= 7:
+                if board[row - i][col + i] == "--":
+                    legal_moves.append((row - i, col + i))
+                elif board[row - i][col + i][0] != self.color[0]:
+                    legal_moves.append((row - i, col + i))
+                    break
+                else:
+                    break
+            else:
+                break
+
+        # Check the bottom left diagonal
+        for i in range(1, 8):
+            if row + i <= 7 and col - i >= 0:
+                if board[row + i][col - i] == "--":
+                    legal_moves.append((row + i, col - i))
+                elif board[row + i][col - i][0] != self.color[0]:
+                    legal_moves.append((row + i, col - i))
+                    break
+                else:
+                    break
+            else:
+                break
+
+        # Check the bottom right diagonal
+        for i in range(1, 8):
+            if row + i <= 7 and col + i <= 7:
+                if board[row + i][col + i] == "--":
+                    legal_moves.append((row + i, col + i))
+                elif board[row + i][col + i][0] != self.color[0]:
+                    legal_moves.append((row + i, col + i))
+                    break
+                else:
+                    break
+            else:
+                break
+
+        return legal_moves

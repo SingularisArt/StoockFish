@@ -5,6 +5,7 @@ from .board import Board
 
 def main():
     pygame.init()
+    pygame.display.set_caption("Chess Board")
 
     chess_board = Board()
 
@@ -19,8 +20,10 @@ def main():
                 if event.key == pygame.K_ESCAPE or event.key == pygame.K_q:
                     running = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    chess_board.handle_mouse_click(pygame.mouse.get_pos())
+                pos = pygame.mouse.get_pos()
+                chess_board.handle_mouse_click(pos)
+
+        chess_board.update_screen()
 
     pygame.quit()
 
