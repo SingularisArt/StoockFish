@@ -1,1 +1,1 @@
-# pufferfish
+# StoockFish (Stupid StockFish)
