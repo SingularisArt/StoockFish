@@ -1,3 +1,0 @@
-/home/singularis/Documents/pufferfish/build/CMakeFiles/ChessEngine.dir
-/home/singularis/Documents/pufferfish/build/CMakeFiles/edit_cache.dir
-/home/singularis/Documents/pufferfish/build/CMakeFiles/rebuild_cache.dir
