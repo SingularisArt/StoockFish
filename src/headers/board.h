@@ -2,6 +2,8 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#pragma once
+
 #include <map>
 #include <string>
 #include <vector>

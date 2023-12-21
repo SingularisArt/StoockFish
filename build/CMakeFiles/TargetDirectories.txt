@@ -1,0 +1,3 @@
+/home/singularis/Documents/StoockFish/build/CMakeFiles/ChessEngine.dir
+/home/singularis/Documents/StoockFish/build/CMakeFiles/edit_cache.dir
+/home/singularis/Documents/StoockFish/build/CMakeFiles/rebuild_cache.dir

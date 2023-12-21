@@ -144,10 +144,3 @@ void ChessBoard::_printBitboard(U64 bitboard) const {
     std::cout << std::endl;
   }
 }
-
-int main() {
-  ChessBoard chessBoard;
-  chessBoard.printBitboards();
-
-  return 0;
-}
