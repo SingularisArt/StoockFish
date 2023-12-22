@@ -1,5 +1,6 @@
 /**
- * @file
+ * @file renderWindow.cpp
+ * @author Hashem A. Damrah
  * @brief Implementation file for the RenderWindow class.
  * @copyright
  */
@@ -22,6 +23,18 @@ RenderWindow::RenderWindow(const char *title, int p, int h)
   }
 
   renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+}
+
+SDL_Texture *RenderWindow::loadTexture(const char *filePath) {
+  SDL_Texture *texture = NULL;
+  texture = IMG_LoadTexture(renderer, filePath);
+
+  if (texture == NULL) {
+    std::cerr << "Failed to load texture. Error: " << SDL_GetError()
+              << std::endl;
+  }
+
+  return texture;
 }
 
 void RenderWindow::cleanUp() {

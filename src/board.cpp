@@ -1,5 +1,5 @@
 /**
- * @file
+ * @file board.cpp
  * @author Hashem A. Damrah
  * @brief Chess board representation.
  * @copyright

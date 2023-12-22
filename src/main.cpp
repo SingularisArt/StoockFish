@@ -1,5 +1,5 @@
 /**
- * @file
+ * @file main.cpp
  * @author Hashem A. Damrah
  * @brief Main file for the chess engine.
  * @copyright
@@ -22,13 +22,13 @@ int main(int argc, char* args[]) {
       << std::endl;
   }
 
-  // // // Initialize SDL_image
-  // if (!(IMG_Init(IMG_INIT_PNG))) {
-  //   std::cerr
-  //     << "SDL_image could not initialize! SDL_image Error: "
-  //     << SDL_GetError()
-  //     << std::endl;
-  // }
+  // Initialize SDL_image
+  if (!(IMG_Init(IMG_INIT_PNG))) {
+    std::cerr
+      << "SDL_image could not initialize! SDL_image Error: "
+      << SDL_GetError()
+      << std::endl;
+  }
 
   /**
    * @brief The window that the game is rendered in.

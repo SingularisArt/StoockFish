@@ -1,5 +1,6 @@
 /**
- * @file
+ * @file renderWindow.h
+ * @author Hashem A. Damrah
  * @brief Header file for the RenderWindow class.
  * @copyright
  */
@@ -23,6 +24,14 @@ class RenderWindow {
      * @param h Height of the window.
      */
     RenderWindow(const char* title, int w, int h);
+
+    /**
+     * @brief Render the game.
+     *
+     * @param filePath The path to the image that is to be rendered.
+     * @return SDL_Texture* The texture that is to be rendered.
+     */
+    SDL_Texture* loadTexture(const char* filePath);
 
     /**
      * @brief Destroy the Render Window object.

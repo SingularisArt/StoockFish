@@ -1,4 +1,10 @@
-// board.h
+/**
+ * @file board.h
+ * @author Hashem A. Damrah
+ * @brief Header file for the ChessBoard class.
+ * @copyright
+ */
+
 #ifndef BOARD_H
 #define BOARD_H
 
