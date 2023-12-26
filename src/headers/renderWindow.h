@@ -17,6 +17,16 @@
 class RenderWindow {
  public:
     /**
+     * @brief The window that the game is rendered in.
+     */
+    SDL_Window* window;
+
+    /**
+     * @brief The renderer that renders the game.
+     */
+    SDL_Renderer* renderer;
+
+    /**
      * @brief Construct a new Render Window object.
      *
      * @param title The title of the window.
@@ -31,21 +41,41 @@ class RenderWindow {
      * @param filePath The path to the image that is to be rendered.
      * @return SDL_Texture* The texture that is to be rendered.
      */
-    SDL_Texture* loadTexture(const char* filePath);
+    SDL_Texture* loadTexture(const char *filePath);
 
     /**
      * @brief Destroy the Render Window object.
      */
     void cleanUp();
 
- private:
     /**
-     * @brief The window that the game is rendered in.
+     * @brief Clear the window.
      */
-    SDL_Window* window;
+    void clean();
 
     /**
-     * @brief The renderer that renders the game.
+     * @brief Render the texture.
+     *
+     * @param texture The texture that is to be rendered.
+     * @param row The row that the texture is to be rendered in.
+     * @param col The column that the texture is to be rendered in.
      */
-    SDL_Renderer* renderer;
+    void render(SDL_Texture *texture, int row, int col);
+
+    /**
+     * @brief Scale the texture, render it, and return it.
+     *
+     * @param texture The texture that is to be scaled.
+     * @param row The row that the texture is to be scaled in.
+     * @param col The column that the texture is to be scaled in.
+     * @param size The size of the texture.
+     * @param scale The scale of the texture.
+     */
+    SDL_Texture *scaleTexture(SDL_Texture *texture, int row, int col, int size,
+                              double scale);
+
+    /**
+     * @brief Display the game.
+     */
+    void display();
 };

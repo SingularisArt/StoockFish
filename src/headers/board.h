@@ -15,6 +15,7 @@
 #include <vector>
 
 #include "./defs.h"
+#include "./renderWindow.h"
 
 /**
  * @class ChessBoard.
@@ -45,6 +46,8 @@ class ChessBoard {
 
     void printBitboards() const;
 
+    void displayBoard(RenderWindow window) const;
+
     // Hashmap for starting positions
     std::map<std::string, std::string> const fenPositions = {
       {"startingPosition",
@@ -62,6 +65,21 @@ class ChessBoard {
     U64 _pieces[2][6];
 
     void _clearBitBoards();
+
+    /**
+     * @brief Render a square at the specified row and column.
+     *
+     * @param window The window that the square is to be rendered in.
+     * @param r The red value of the square.
+     * @param g The green value of the square.
+     * @param b The blue value of the square.
+     * @param a The alpha value of the square.
+     * @param row The row that the square is to be rendered in.
+     * @param col The column that the square is to be rendered in.
+     * @param size The size of the square.
+     */
+    void _displaySquare(RenderWindow window, Uint8 r, Uint8 g, Uint8 b, Uint8 a,
+                        int row, int col, int size) const;
 
     std::vector<std::string> _tokenizeString(
         const std::string& input, char delimiter);

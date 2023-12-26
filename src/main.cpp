@@ -7,13 +7,14 @@
 
 #include "./headers/board.h"
 #include "./headers/renderWindow.h"
+#include "./headers/entity.h"
 
 #include <iostream>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-int main(int argc, char* args[]) {
+int main(int argc, char *args[]) {
   // Initialize SDL
   if (SDL_Init(SDL_INIT_EVERYTHING) > 0) {
     std::cerr
@@ -30,26 +31,17 @@ int main(int argc, char* args[]) {
       << std::endl;
   }
 
-  /**
-   * @brief The window that the game is rendered in.
-   */
-  RenderWindow window("Chess", 700, 700);
+  // The window that the game is rendered in.
+  RenderWindow window("Chess", 512, 512);
 
-  /**
-   * @brief The event that is used to handle user input.
-   */
+  // The event that is used to handle user input.
   SDL_Event event;
 
-  /**
-   * @brief Variable that controls the main loop.
-   */
+  // Variable that controls the main loop.
   bool isRunning = true;
 
-  /**
-   * @brief The chess board.
-   */
+  // The chess board.
   ChessBoard chessBoard;
-  // chessBoard.printBitboards();
 
   // Main game loop
   while (isRunning) {
@@ -61,8 +53,18 @@ int main(int argc, char* args[]) {
         isRunning = false;
       }
     }
+
+    // Clear the window
+    window.clean();
+
+    // Render chessboard grid
+    // chessBoard.displayBoard(window);
+
+    // Update the window
+    window.display();
   }
 
+  // Clean up
   window.cleanUp();
   SDL_Quit();
 

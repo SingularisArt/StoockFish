@@ -37,6 +37,51 @@ SDL_Texture *RenderWindow::loadTexture(const char *filePath) {
   return texture;
 }
 
-void RenderWindow::cleanUp() {
-  SDL_DestroyWindow(window);
+void RenderWindow::cleanUp() { SDL_DestroyWindow(window); }
+
+void RenderWindow::clean() { SDL_RenderClear(renderer); }
+
+void RenderWindow::render(SDL_Texture *texture, int row, int col) {
+  int squareSize = 32;
+  int x = col * squareSize;
+  int y = row * squareSize;
+
+  // Create a destination rectangle to specify where to render the texture.
+  SDL_Rect destRect = {x, y, squareSize, squareSize};
+
+  // Render the texture to the specified destination rectangle.
+  SDL_RenderCopy(renderer, texture, NULL, &destRect);
+
+  // Update the screen.
+  SDL_RenderPresent(renderer);
 }
+
+SDL_Texture *RenderWindow::scaleTexture(SDL_Texture *texture, int row, int col,
+                                        int size, double scale) {
+  // Calculate the destination rectangle for scaling
+  int x = col * size;
+  int y = row * size;
+
+  int scaledWidth = static_cast<int>(size * scale);
+  int scaledHeight = static_cast<int>(size * scale);
+
+  // Create a surface to render the scaled texture onto
+  SDL_Surface *surface =
+      SDL_CreateRGBSurface(0, scaledWidth, scaledHeight, 32, 0, 0, 0, 0);
+
+  // Create a destination rectangle for rendering
+  SDL_Rect destRect = {x, y, scaledWidth, scaledHeight};  // Adjusted for position
+
+  // Create a texture from the surface
+  SDL_Texture *scaledTexture = SDL_CreateTextureFromSurface(renderer, surface);
+
+  // Render the texture to the surface
+  SDL_RenderCopy(renderer, texture, NULL, &destRect);
+
+  // Free the surface
+  SDL_FreeSurface(surface);
+
+  // Return the scaled texture
+  return scaledTexture;
+}
+void RenderWindow::display() { SDL_RenderPresent(renderer); }
